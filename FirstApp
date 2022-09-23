@@ -1,0 +1,25 @@
+:u
+:wu
+:u/
+\u:
+\:u
+\:q
+:q\
+q\
+q:\
+\q
+\l
+\dt addresses
+\dt schools
+\dt
+\dv
+\du
+SELECT version()
+;
+\s
+\e
+SELECT version()
+;
+\q
+\s
+\s FirstApp

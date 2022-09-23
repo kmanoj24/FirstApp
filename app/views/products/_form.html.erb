@@ -1,0 +1,17 @@
+<%= form_for @product, url: path, method: method do |f| %>
+	Title: <%= f.text_field :title %><br>
+	Description: <%= f.text_field :description %><br>
+	Price: <%= f.text_field :price %>
+	image: <%= f.file_field :picture %>
+	<%= f.submit %>
+
+	<h3>Add Reviews</h3>
+<%= f.fields_for :reviews, do |review| %>
+	<%= render "review_fields", ff: review %>
+<% end %>
+
+<div class="links">
+	<%= link_to_add_association "Write Review" %>
+</div> 
+
+<% end %>

@@ -1,0 +1,27 @@
+<div class="col-lg-4 mx-lg-auto">
+  	<div class="card shadow">
+	    <div class="card-header">
+	      <h4 class="card-title">Sign In</h4>
+	    </div>
+	    <div class="card-body">
+			<%= form_for @user, url: sessions_create_path, method: :post do |f| %>
+				<% if @user.errors.any? %>
+					<div class="alert alert-danger">
+						<% @user.errors.messages.each do |message| %>
+							<div><%= message %></div>
+						<% end %>			
+					</div>
+				<% end %>
+				<div class="form-inputs">
+					Email: <%= f.email_field :email, class: "form-control form-control-sm" %>
+					<br>
+					Password: <%= f.password_field :password, class: "form-control form-control-sm" %>
+					<br>
+					<div class="actions">
+						<%= f.submit 'Sign In', class: "btn btn-primary btn-sm"  %>
+					</div>
+				</div>	
+			<% end %>
+		</div>
+	</div>
+</div>

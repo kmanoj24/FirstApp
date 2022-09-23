@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FirstApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <div class="bg-image p-5 text-left shadow-1-strong rounded mb-5"
+      style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp');">
+    <%= render "/layouts/header" %>
+      <div class="container">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <div>
+          <%= yield %>
+        </div>
+      </div>    
+      <%= render "/layouts/footer" %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<p class='text-white'>All Products page</p>
+<%= link_to "Create Product", products_new_path, :class => "btn btn-warning btn-sm mt-3 mb-3" %>
+
+<%= search_form_for @products, url: :products do |form| %>
+	<div class="form-group text-white">
+		<%= form.label :title_cont %>
+		<%= form.text_field :title_cont %>
+	</div>
+
+	<div class="form-group text-white">
+		<%= form.label :price, class: "form-label" %>
+		<%= form.text_field :price_lt, class: "form-control" %>
+	</div>
+<% end %>
+<table class='table text-white'>
+	<thead>
+		<tr class='justify-content-center'>
+			<th>Product ID</th>
+			<th>Title</th>
+			<th>Category</th>
+			<th>Sub Category</th>
+			<th>Description</th>
+			<th>Price</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @total_products.each do |product| %>
+		<tr>
+				<td><%= product.id %></td>
+				<td><%= product.title %></td>
+				<td><%= product.catagory.title.capitalize %></td>
+				<td><%= product.sub_catagory.color.capitalize %></td>
+				<td><%= product.description %></td>
+				<td><%= product.price %></td>
+				<%# link_to "Buy", carts_path %>
+
+
+				<td><%= link_to "Show", product_show_path(product), class: "btn btn-success btn-sm mt-3 mb-3" %></td>					
+		</tr>		
+		<% end %>
+	</tbody>
+</table>
+<div role="navigation" aria-label="Pagination" class="pagination">
+  <%= will_paginate @total_products, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
+</div>
