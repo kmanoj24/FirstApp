@@ -6,7 +6,6 @@ class Product < ApplicationRecord
   belongs_to :user
 
 # ascfsfgnsg
-#WAEFAFVAGAEGEGGAAG
   has_many :reviews, dependent: :destroy
   accepts_nested_attributes_for :reviews, reject_if: :all_blank, allow_destroy: true
 end
