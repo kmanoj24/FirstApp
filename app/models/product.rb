@@ -2,7 +2,7 @@ class Product < ApplicationRecord
   belongs_to :catagory, optional: true
   belongs_to :sub_catagory, optional: true
 
-  belongs_to :cart
+  belongs_to :cart, optional: true
   belongs_to :user
 
 
