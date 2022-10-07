@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
 		if @product.save
 			redirect_to products_path
 		else
+			byebug
 			render "new_product"
 		end
 	end
@@ -29,11 +30,21 @@ class ProductsController < ApplicationController
 
 	def update_product
 		@product = Product.find(params[:id])
-		if @product.update(product_params)
-			redirect_to product_show_path
-		else
-			render "edit_product"
-		end
+		# if @product.update(product_params)
+		# 	redirect_to product_show_path
+		# else
+		# 	render "edit_product"
+		# end
+		 if @product.update(title: params[:title], price: params[:price], description: params[:description])
+		 	options = { 
+		 		include: [:catagory, :sub_catagory]
+		 		# {fields: { product: [:price] } }
+		 	}
+        render json: ProductSerializer.new(@product, options).serializable_hash, status: :created
+      else
+        render json: { errors: format_activerecord_errors(@product.errors) },
+               status: :unprocessable_entity
+      end
 	end
 
 	def delete_product
@@ -46,6 +57,6 @@ class ProductsController < ApplicationController
 	private
 
 	def product_params
-		params.require(:product).permit(:title, :description, :price, :picture, reviews_attributes: [:description])		
+		params.require(:product).permit(:title, :description, :price, :picture, :avatar, uploads: [], reviews_attributes: [:description])		
 	end
 end
